@@ -1,0 +1,12 @@
+/* Utility classes */
+.bg-primary-grey {
+  background: var(--primary-grey);
+}
+
+/* text colors */
+.text-primary-black {
+  color: var(--primary-black);
+}
+.text-secondary-grey {
+  color: var(--secondary-grey);
+}
