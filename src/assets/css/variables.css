@@ -30,10 +30,18 @@
   --font-size-button: 18px;
   --line-height-button: 100%;
 
+  /* form tokens */
+  --placeholder-color: #bfbfbf;
+
   /* fav button tokens */
   --btn-fav-bg: #f5f5f5;
   --btn-fav-color: #bfbfbf;
   --btn-fav-color-active: #eca539;
   --btn-fav-size: 44px;
   --btn-fav-icon-size: 26px;
+
+  /* form focus tokens */
+  --form-focus-color: #eca539; /* border color on focus */
+  --form-focus-ring: rgba(236, 165, 57, 0.35); /* outer glow */
+  --form-focus-ring-width: 3px;
 }

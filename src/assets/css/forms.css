@@ -1,0 +1,17 @@
+/* global form styles */
+.form-control:focus,
+.form-control:focus-visible {
+  outline: none;
+  border-color: var(--form-focus-color);
+  box-shadow: 0 0 0 var(--form-focus-ring-width) var(--form-focus-ring);
+}
+
+/* placeholder color */
+input::placeholder,
+textarea::placeholder,
+select::placeholder,
+.form-control::placeholder {
+  color: var(--placeholder-color);
+  opacity: 1;
+  font-weight: 500;
+}
