@@ -1,6 +1,31 @@
-/* Global CSS variables */
+/* global css variables */
+
 :root {
+  /* colors */
   --primary-grey: #f9f9f9;
   --secondary-grey: #5e5e5e;
   --primary-black: #353535;
+
+  /* font families */
+  --font-family-base: 'Lato', sans-serif;
+
+  /* button tokens (primary) */
+  --btn-primary-text: #ffffff;
+  --btn-primary-bg: #f22539;
+  --btn-primary-border: #f22539;
+  --btn-primary-hover-text: #ffffff;
+  --btn-primary-hover-bg: #c00e20;
+  --btn-primary-hover-border: #c00e20;
+  --btn-primary-active-text: #ffffff;
+  --btn-primary-active-bg: #c00e20;
+  --btn-primary-active-border: #c00e20;
+  --btn-primary-disabled-text: #ffffff;
+  --btn-primary-disabled-bg: #bfbfbf;
+  --btn-primary-disabled-border: #bfbfbf;
+
+  /* font weights */
+  --font-weight-bold: 700;
+
+  /* component sizes */
+  --font-size-button: 18px;
 }

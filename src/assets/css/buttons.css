@@ -1,0 +1,28 @@
+/* global button adjustments */
+.btn {
+  --bs-btn-font-size: var(--font-size-button);
+}
+
+/*primary button color system */
+.btn-primary {
+  --bs-btn-font-weight: var(--font-weight-bold);
+  --bs-btn-color: var(--btn-primary-text);
+  --bs-btn-bg: var(--btn-primary-bg);
+  --bs-btn-border-color: var(--btn-primary-border);
+
+  --bs-btn-hover-color: var(--btn-primary-hover-text);
+  --bs-btn-hover-bg: var(--btn-primary-hover-bg);
+  --bs-btn-hover-border-color: var(--btn-primary-hover-border);
+
+  --bs-btn-active-color: var(--btn-primary-active-text);
+  --bs-btn-active-bg: var(--btn-primary-active-bg);
+  --bs-btn-active-border-color: var(--btn-primary-active-border);
+
+  --bs-btn-disabled-color: var(--btn-primary-disabled-text);
+  --bs-btn-disabled-bg: var(--btn-primary-disabled-bg);
+  --bs-btn-disabled-border-color: var(--btn-primary-disabled-border);
+
+  --bs-btn-padding-x: 20px;
+  --bs-btn-padding-y: 11px;
+  --bs-btn-border-radius: 60px;
+}

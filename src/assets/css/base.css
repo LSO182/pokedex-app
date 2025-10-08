@@ -1,4 +1,4 @@
-/* Utility classes */
+/* utility classes */
 .bg-primary-grey {
   background: var(--primary-grey);
 }
@@ -9,4 +9,57 @@
 }
 .text-secondary-grey {
   color: var(--secondary-grey);
+}
+
+/* base font family */
+body {
+  font-family: var(--font-family-base);
+}
+
+/* headings */
+h1,
+.h1 {
+  font-size: 2.5rem;
+}
+h2,
+.h2 {
+  font-size: 2rem;
+}
+h3,
+.h3 {
+  font-size: 1.625rem;
+}
+h4,
+.h4 {
+  font-size: 1.5rem;
+}
+h5,
+.h5 {
+  font-size: 1.125rem;
+}
+h6,
+.h6 {
+  font-size: 1rem;
+}
+
+/* line-height utilities */
+.lh-100 {
+  line-height: 100%;
+}
+.lh-150 {
+  line-height: 150%;
+}
+
+/* custom spacing utilities */
+.pt-70 {
+  padding-top: 70px;
+}
+.pt-50 {
+  padding-top: 50px;
+}
+.pt-60 {
+  padding-top: 60px;
+}
+.pt-30 {
+  padding-top: 30px;
 }
