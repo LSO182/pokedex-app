@@ -25,4 +25,5 @@
   --bs-btn-padding-x: 20px;
   --bs-btn-padding-y: 11px;
   --bs-btn-border-radius: 60px;
+  line-height: var(--line-height-button);
 }

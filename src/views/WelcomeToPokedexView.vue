@@ -1,5 +1,15 @@
 <script setup lang="ts">
 import BaseButton from '@/components/ui/BaseButton.vue'
+import { usePokemonStore } from '@/stores/pokemon'
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
+const pokemon = usePokemonStore()
+
+async function onGetStarted() {
+  void pokemon.fetchAll()
+  router.push({ name: 'pokemons' })
+}
 </script>
 
 <template>
@@ -22,7 +32,7 @@ import BaseButton from '@/components/ui/BaseButton.vue'
             the Pokémon world.
           </p>
           <div class="d-flex justify-content-center pt-50">
-            <BaseButton variant="primary"> Get started </BaseButton>
+            <BaseButton variant="primary" @click="onGetStarted"> Get started </BaseButton>
           </div>
         </div>
       </div>
