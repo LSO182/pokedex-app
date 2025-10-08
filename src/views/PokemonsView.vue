@@ -3,10 +3,10 @@ import { storeToRefs } from 'pinia'
 import { usePokemonStore } from '@/stores/pokemon'
 import { onMounted, ref, computed } from 'vue'
 import LoadingView from './LoadingView.vue'
-import FavButton from '@/components/ui/FavButton.vue'
+import PokemonCard from '@/components/PokemonCard.vue'
 
 const store = usePokemonStore()
-const { pokemons, count, loading, error } = storeToRefs(store)
+const { pokemons, loading, error } = storeToRefs(store)
 
 const minDelayPassed = ref(false)
 onMounted(() => {
@@ -26,23 +26,17 @@ const showLoading = computed(() => loading.value || !minDelayPassed.value)
       <div class="row justify-content-center">
         <div class="col-lg-10">
           <p v-if="error" class="text-danger">{{ error }}</p>
-          <ul v-else class="mt-3">
-            <h1 class="text-primary-black h3 fw-bold">Pokemons ({{ count }})</h1>
-            <FavButton />
-            <li v-for="pokemon in pokemons" :key="pokemon.name">{{ pokemon.name }}</li>
-          </ul>
+          <div v-else>
+            <div class="d-flex flex-column align-items-center justify-content-center">
+              <div v-for="pokemon in pokemons" :key="pokemon.name">
+                <PokemonCard :name="pokemon.name" />
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </template>
 
-<style scoped>
-ul {
-  list-style: none;
-  padding: 0;
-}
-li {
-  padding: 4px 0;
-}
-</style>
+<style scoped></style>
