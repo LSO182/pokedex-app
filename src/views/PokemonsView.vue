@@ -3,14 +3,15 @@ import { storeToRefs } from 'pinia'
 import { usePokemonStore } from '@/stores/pokemon'
 import { onMounted, ref, computed } from 'vue'
 import LoadingView from './LoadingView.vue'
+import FavButton from '@/components/ui/FavButton.vue'
 
 const store = usePokemonStore()
-const { items, count, loading, error } = storeToRefs(store)
+const { pokemons, count, loading, error } = storeToRefs(store)
 
 const minDelayPassed = ref(false)
 onMounted(() => {
   setTimeout(() => (minDelayPassed.value = true), 3000)
-  if (!loading.value && items.value.length === 0) {
+  if (!loading.value && pokemons.value.length === 0) {
     store.fetchAll()
   }
 })
@@ -27,7 +28,8 @@ const showLoading = computed(() => loading.value || !minDelayPassed.value)
           <p v-if="error" class="text-danger">{{ error }}</p>
           <ul v-else class="mt-3">
             <h1 class="text-primary-black h3 fw-bold">Pokemons ({{ count }})</h1>
-            <li v-for="p in items" :key="p.name">{{ p.name }}</li>
+            <FavButton />
+            <li v-for="pokemon in pokemons" :key="pokemon.name">{{ pokemon.name }}</li>
           </ul>
         </div>
       </div>

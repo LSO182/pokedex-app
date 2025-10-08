@@ -3,7 +3,7 @@ import { fetchAllPokemon } from '@/services/pokemon.service'
 import type { PokemonListResponse, NamedAPIResource } from '@/types/pokemon'
 
 interface State {
-  items: NamedAPIResource[]
+  pokemons: NamedAPIResource[]
   count: number
   next: string | null
   previous: string | null
@@ -13,7 +13,7 @@ interface State {
 
 export const usePokemonStore = defineStore('pokemon', {
   state: (): State => ({
-    items: [],
+    pokemons: [],
     count: 0,
     next: null,
     previous: null,
@@ -26,7 +26,7 @@ export const usePokemonStore = defineStore('pokemon', {
       this.error = null
       try {
         const data: PokemonListResponse = await fetchAllPokemon()
-        this.items = data.results
+        this.pokemons = data.results
         this.count = data.count
         this.next = data.next
         this.previous = data.previous

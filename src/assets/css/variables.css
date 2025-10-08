@@ -29,4 +29,11 @@
   /* component sizes */
   --font-size-button: 18px;
   --line-height-button: 100%;
+
+  /* fav button tokens */
+  --btn-fav-bg: #f5f5f5;
+  --btn-fav-color: #bfbfbf;
+  --btn-fav-color-active: #eca539;
+  --btn-fav-size: 44px;
+  --btn-fav-icon-size: 26px;
 }

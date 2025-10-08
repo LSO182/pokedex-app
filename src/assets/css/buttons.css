@@ -1,8 +1,3 @@
-/* global button adjustments */
-.btn {
-  --bs-btn-font-size: var(--font-size-button);
-}
-
 /*primary button color system */
 .btn-primary {
   --bs-btn-font-weight: var(--font-weight-bold);
@@ -26,4 +21,26 @@
   --bs-btn-padding-y: 11px;
   --bs-btn-border-radius: 60px;
   line-height: var(--line-height-button);
+}
+
+/* fav button */
+.btn-fav {
+  background: var(--btn-fav-bg);
+  border-radius: 50%;
+  width: var(--btn-fav-size);
+  height: var(--btn-fav-size);
+  color: var(--btn-fav-color);
+  border: none;
+  cursor: pointer;
+  transition: color 160ms ease-in-out;
+}
+
+.btn-fav .icon-star {
+  width: var(--btn-fav-icon-size);
+  height: var(--btn-fav-icon-size);
+}
+
+.btn-fav:hover,
+.btn-fav:active {
+  color: var(--btn-fav-color-active);
 }
