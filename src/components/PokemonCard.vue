@@ -1,14 +1,32 @@
 <script setup lang="ts">
 import FavButton from '@/components/ui/FavButton.vue'
+import { computed } from 'vue'
+import { usePokemonStore } from '@/stores/pokemon'
+import { useFavouritesStore } from '@/stores/favourites'
+import type { PokemonListItem } from '@/types/pokemon'
 
-defineProps<{ name: string }>()
+const props = defineProps<{ name: string }>()
+
+const pokemonStore = usePokemonStore()
+const favourites = useFavouritesStore()
+
+const item = computed<PokemonListItem>(() => {
+  const found = pokemonStore.pokemons.find((p) => p.name === props.name)
+  return found ?? { name: props.name, url: '' }
+})
+
+const isFav = computed(() => favourites.isFavourite(props.name))
+
+function setFavouritePokemon() {
+  favourites.toggle(item.value)
+}
 </script>
 
 <template>
   <div class="pokemon-card bg-white rounded d-flex align-items-center justify-content-between">
     <p class="h4 text-primary-black text-capitalize mb-0">{{ name }}</p>
     <div class="card-btn-fav">
-      <FavButton />
+      <FavButton :aria-pressed="isFav" @click="setFavouritePokemon" />
     </div>
   </div>
 </template>

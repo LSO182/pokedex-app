@@ -41,6 +41,7 @@
 }
 
 .btn-fav:hover,
-.btn-fav:active {
+.btn-fav:active,
+.btn-fav[aria-pressed="true"] {
   color: var(--btn-fav-color-active);
 }

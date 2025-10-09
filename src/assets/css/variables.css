@@ -8,6 +8,7 @@
 
   /* font families */
   --font-family-base: 'Lato', sans-serif;
+  --placeholder-font-family: 'Montserrat', sans-serif;
 
   /* button tokens (primary) */
   --btn-primary-text: #ffffff;
