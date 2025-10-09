@@ -99,10 +99,16 @@
   height: var(--btn-fav-icon-size);
 }
 
-.btn-fav:hover,
-.btn-fav:active,
-.btn-fav[aria-pressed='true'] {
+.btn-fav[aria-pressed='true'],
+.btn-fav[aria-pressed='true']:hover,
+.btn-fav[aria-pressed='true']:active {
   color: var(--btn-fav-color-active);
+}
+
+.btn-fav:not([aria-pressed='true']):hover,
+.btn-fav:not([aria-pressed='true']):active {
+  color: var(--btn-fav-color);
+  opacity: 0.85;
 }
 
 .btn-content {

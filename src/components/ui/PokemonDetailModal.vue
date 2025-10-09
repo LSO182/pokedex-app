@@ -3,6 +3,11 @@ import { ref, watch, onMounted, onBeforeUnmount, computed } from 'vue'
 import Modal from 'bootstrap/js/dist/modal'
 import { fetchPokemonDetail } from '@/services/pokemon.service'
 import type { PokemonDetail } from '@/types/pokemon'
+import FavButton from '@/components/ui/FavButton.vue'
+import BaseButton from '@/components/ui/BaseButton.vue'
+import BaseToast from '@/components/ui/BaseToast.vue'
+import { useTransientToast } from '@/composables/useToast'
+import { useFavouritesStore } from '@/stores/favourites'
 
 const props = defineProps<{
   modelValue: boolean
@@ -17,6 +22,57 @@ let instance: Modal | null = null
 const loading = ref(false)
 const error = ref<string | null>(null)
 const detail = ref<PokemonDetail | null>(null)
+
+const favourites = useFavouritesStore()
+const currentName = computed(() => detail.value?.name ?? props.identifier ?? '')
+const currentUrl = computed(
+  () => props.url ?? (detail.value ? `https://pokeapi.co/api/v2/pokemon/${detail.value.id}/` : ''),
+)
+const isFav = computed(() =>
+  currentName.value
+    ? favourites.items.some((i) => i.name.toLowerCase() === currentName.value.toLowerCase())
+    : false,
+)
+function toggleFav() {
+  if (!currentName.value) return
+  favourites.toggle({ name: currentName.value, url: currentUrl.value })
+}
+const shareLabel = ref('Share to my friends')
+const srAnnounce = ref('')
+const { visible: toastVisible, message: toastMessage, showToast } = useTransientToast(1800)
+async function share() {
+  const d = detail.value
+  const name = currentName.value
+  const types = d?.types?.map((t) => t.type.name).join(' / ')
+  const parts = [name, d?.weight?.toString(), d?.height?.toString(), types].filter(
+    (x): x is string => Boolean(x),
+  )
+  const text = parts.join(', ')
+  try {
+    if (navigator.clipboard && typeof navigator.clipboard.writeText === 'function') {
+      await navigator.clipboard.writeText(text)
+    } else {
+      const ta = document.createElement('textarea')
+      ta.value = text
+      ta.style.position = 'fixed'
+      ta.style.opacity = '0'
+      document.body.appendChild(ta)
+      ta.focus()
+      ta.select()
+      try {
+        document.execCommand('copy')
+      } finally {
+        document.body.removeChild(ta)
+      }
+    }
+    showToast('Se copiaron los valores al portapapeles')
+    srAnnounce.value = 'Copiado al portapapeles'
+    setTimeout(() => (srAnnounce.value = ''), 1500)
+  } catch (e) {
+    showToast('No se pudo copiar al portapapeles')
+  }
+  return
+}
 
 function show() {
   if (instance) instance.show()
@@ -78,6 +134,11 @@ onBeforeUnmount(() => {
           <div v-else-if="error" class="text-danger">{{ error }}</div>
           <template v-else>
             <div class="pokedex-image">
+              <div class="d-flex">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                  <img src="/src/assets/images/btn-close-icon.png" alt="Close" />
+                </button>
+              </div>
               <img
                 v-if="
                   detail &&
@@ -114,13 +175,22 @@ onBeforeUnmount(() => {
                   {{ detail!.types.map((t) => t.type.name).join(', ') }}
                 </p>
               </div>
-              <div class="modal-buttons"></div>
+              <div
+                class="d-flex align-items-center justify-content-center gap-3 mt-4 modal-buttons"
+              >
+                <BaseButton variant="primary" @click="share" class="btn-195">{{
+                  shareLabel
+                }}</BaseButton>
+                <FavButton :pressed="isFav" @click="toggleFav" />
+                <span class="visually-hidden" aria-live="polite">{{ srAnnounce }}</span>
+              </div>
             </div>
           </template>
         </div>
       </div>
     </div>
   </div>
+  <BaseToast v-model="toastVisible" :message="toastMessage" variant="success" />
 </template>
 
 <style scoped>
@@ -131,4 +201,5 @@ onBeforeUnmount(() => {
   border-bottom: 1px solid var(--tertiary-grey);
   margin: 0 30px;
 }
+/* toast styles are encapsulated in BaseToast */
 </style>

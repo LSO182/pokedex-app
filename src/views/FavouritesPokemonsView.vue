@@ -5,6 +5,8 @@ import SearchInput from '@/components/ui/SearchInput.vue'
 import NotPokemonFound from './NotPokemonFound.vue'
 import PokemonCard from '@/components/PokemonCard.vue'
 import { onMounted } from 'vue'
+import BaseToast from '@/components/ui/BaseToast.vue'
+import { useTransientToast } from '@/composables/useToast'
 
 const fav = useFavouritesStore()
 const { filteredFavouritePokemons, searchTerm } = storeToRefs(fav)
@@ -12,6 +14,11 @@ const { filteredFavouritePokemons, searchTerm } = storeToRefs(fav)
 onMounted(() => {
   fav.setSearchTerm('')
 })
+
+const { visible: toastVisible, message: toastMessage, showToast } = useTransientToast(1800)
+function onRemoved(name: string) {
+  showToast(`Quitaste ${name} de favoritos`)
+}
 </script>
 
 <template>
@@ -23,9 +30,10 @@ onMounted(() => {
           <NotPokemonFound v-if="searchTerm && filteredFavouritePokemons.length === 0" />
           <template v-else>
             <div v-for="pokemon in filteredFavouritePokemons" :key="pokemon.name">
-              <PokemonCard :name="pokemon.name" />
+              <PokemonCard :name="pokemon.name" @favourite-removed="onRemoved" />
             </div>
           </template>
+          <BaseToast v-model="toastVisible" :message="toastMessage" variant="info" />
         </div>
       </div>
     </div>

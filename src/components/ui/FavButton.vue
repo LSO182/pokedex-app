@@ -1,5 +1,21 @@
+<script setup lang="ts">
+const props = defineProps<{ pressed?: boolean; ariaLabel?: string }>()
+const emit = defineEmits<{ (e: 'click', ev: MouseEvent): void }>()
+
+function onClick(ev: MouseEvent) {
+  ev.stopPropagation()
+  emit('click', ev)
+}
+</script>
+
 <template>
-  <button class="btn-fav d-flex align-items-center justify-content-center" aria-label="Favorito">
+  <button
+    type="button"
+    class="btn-fav d-flex align-items-center justify-content-center"
+    :aria-pressed="props.pressed ?? false"
+    :aria-label="props.ariaLabel ?? (props.pressed ? 'Quitar de favoritos' : 'Agregar a favoritos')"
+    @click="onClick"
+  >
     <svg viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg" class="icon-star">
       <path
         d="M11.6052 0.904438L8.43178 7.62704L1.33161 8.70855C0.0580367 8.90693 -0.45171 10.4903 0.475296 11.4291L5.62249 16.6662L4.40512 23.8453C4.18612 25.1375 5.51379 26.1041 6.61923 25.4782L13 21.8844L19.3808 25.4782C20.4862 26.1039 21.8139 25.1375 21.5949 23.8453L20.3775 16.6662L25.5247 11.4291C26.4517 10.4903 25.942 8.90693 24.6684 8.70855L17.5682 7.62704L14.3948 0.904438C13.8213 -0.309084 12.1787 -0.309084 11.6052 0.904438Z"

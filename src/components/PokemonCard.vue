@@ -7,6 +7,10 @@ import type { PokemonListItem } from '@/types/pokemon'
 import PokemonDetailModal from '@/components/ui/PokemonDetailModal.vue'
 
 const props = defineProps<{ name: string }>()
+const emit = defineEmits<{
+  (e: 'favourite-removed', name: string): void
+  (e: 'favourite-added', name: string): void
+}>()
 
 const pokemonStore = usePokemonStore()
 const favourites = useFavouritesStore()
@@ -19,7 +23,10 @@ const item = computed<PokemonListItem>(() => {
 const isFav = computed(() => favourites.isFavourite(props.name))
 
 function setFavouritePokemon() {
+  const wasFav = isFav.value
   favourites.toggle(item.value)
+  if (wasFav) emit('favourite-removed', item.value.name)
+  else emit('favourite-added', item.value.name)
 }
 
 const modalOpen = ref(false)
@@ -32,7 +39,7 @@ function openModal() {
   <div class="pokemon-card bg-white rounded d-flex align-items-center justify-content-between">
     <p class="h4 text-primary-black text-capitalize mb-0" @click="openModal">{{ name }}</p>
     <div class="card-btn-fav">
-      <FavButton :aria-pressed="isFav" @click="setFavouritePokemon" />
+      <FavButton :pressed="isFav" @click="setFavouritePokemon" />
     </div>
   </div>
 
