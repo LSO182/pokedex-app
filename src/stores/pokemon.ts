@@ -28,7 +28,7 @@ export const usePokemonStore = defineStore('pokemon', {
       const q = state.searchTerm.trim()
       if (!q) {
         return [...state.pokemons].sort((a, b) =>
-          a.name.localeCompare(b.name, undefined, { sensitivity: 'base' })
+          a.name.localeCompare(b.name, undefined, { sensitivity: 'base' }),
         )
       }
       const fuse = new Fuse(state.pokemons, {
@@ -56,7 +56,9 @@ export const usePokemonStore = defineStore('pokemon', {
       } catch (err: any) {
         this.error = err?.message ?? 'Failed to fetch pokemons'
       } finally {
-        this.loading = false
+        setTimeout(() => {
+          this.loading = false
+        }, 3000) // simulate loading delay for better UX
       }
     },
   },

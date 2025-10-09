@@ -1,0 +1,17 @@
+.modal-content {
+  width: 315px;
+  height: 506px;
+  border-radius: 5px;
+  border: none;
+}
+
+.pokedex-image {
+  background: url('../images/pokelandscape-bg.png') no-repeat bottom;
+  background-size: cover;
+  height: 202px;
+  border-radius: 5px 5px 0 0;
+}
+
+.pokemon-image {
+  max-width: 180px;
+}

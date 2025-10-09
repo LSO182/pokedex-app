@@ -5,7 +5,7 @@ import BottomNav from '@/components/BottomNav.vue'
 
 const route = useRoute()
 const showBottomNav = computed(
-  () => route.name === 'pokemons' || route.name === 'favourites-pokemons'
+  () => route.name === 'pokemons' || route.name === 'favourites-pokemons',
 )
 </script>
 

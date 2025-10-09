@@ -1,20 +1,14 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia'
 import { usePokemonStore } from '@/stores/pokemon'
-import { onMounted, ref, computed } from 'vue'
+import { computed } from 'vue'
 import LoadingView from './LoadingView.vue'
 import NotPokemonFound from './NotPokemonFound.vue'
 import PokemonCard from '@/components/PokemonCard.vue'
 import SearchInput from '@/components/ui/SearchInput.vue'
 
 const store = usePokemonStore()
-const { pokemons, loading, error, searchTerm, filteredPokemons } = storeToRefs(store)
-
-onMounted(() => {
-  if (!loading.value && pokemons.value.length === 0) {
-    store.fetchAll()
-  }
-})
+const { loading, error, searchTerm, filteredPokemons } = storeToRefs(store)
 
 const showLoading = computed(() => loading.value)
 </script>
