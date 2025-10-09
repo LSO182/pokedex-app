@@ -39,7 +39,12 @@ export const useFavouritesStore = defineStore('favourites', {
       state.items.some((i) => i.name.toLowerCase() === name.toLowerCase()),
     filteredFavouritePokemons(state): PokemonListItem[] {
       const q = state.searchTerm.trim()
-      if (!q) return state.items
+      if (!q) {
+        // Return items sorted alphabetically by name when there's no query
+        return [...state.items].sort((a, b) =>
+          a.name.localeCompare(b.name, undefined, { sensitivity: 'base' })
+        )
+      }
       const fuse = new Fuse(state.items, {
         keys: ['name'],
         threshold: 0.3,

@@ -26,7 +26,11 @@ export const usePokemonStore = defineStore('pokemon', {
   getters: {
     filteredPokemons(state): PokemonListItem[] {
       const q = state.searchTerm.trim()
-      if (!q) return state.pokemons
+      if (!q) {
+        return [...state.pokemons].sort((a, b) =>
+          a.name.localeCompare(b.name, undefined, { sensitivity: 'base' })
+        )
+      }
       const fuse = new Fuse(state.pokemons, {
         keys: ['name'],
         threshold: 0.3,
