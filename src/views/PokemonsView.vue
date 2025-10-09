@@ -7,7 +7,7 @@ import PokemonCard from '@/components/PokemonCard.vue'
 import SearchInput from '@/components/ui/SearchInput.vue'
 
 const store = usePokemonStore()
-const { pokemons, loading, error } = storeToRefs(store)
+const { pokemons, loading, error, searchTerm, filteredPokemons } = storeToRefs(store)
 
 const minDelayPassed = ref(false)
 onMounted(() => {
@@ -29,8 +29,8 @@ const showLoading = computed(() => loading.value || !minDelayPassed.value)
           <p v-if="error" class="text-danger">{{ error }}</p>
           <div v-else>
             <div class="d-flex flex-column align-items-center justify-content-center">
-              <SearchInput />
-              <div v-for="pokemon in pokemons" :key="pokemon.name">
+              <SearchInput v-model="searchTerm" placeholder="Search" class="search-input-py" />
+              <div v-for="pokemon in filteredPokemons" :key="pokemon.name">
                 <PokemonCard :name="pokemon.name" />
               </div>
             </div>
@@ -41,4 +41,9 @@ const showLoading = computed(() => loading.value || !minDelayPassed.value)
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.search-input-py {
+  padding-top: 35px;
+  padding-bottom: 40px;
+}
+</style>

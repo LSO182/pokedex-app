@@ -1,14 +1,16 @@
 import { defineStore } from 'pinia'
+import Fuse from 'fuse.js'
 import { fetchAllPokemon } from '@/services/pokemon.service'
-import type { PokemonListResponse, NamedAPIResource } from '@/types/pokemon'
+import type { PokemonListResponse, PokemonListItem } from '@/types/pokemon'
 
 interface State {
-  pokemons: NamedAPIResource[]
+  pokemons: PokemonListItem[]
   count: number
   next: string | null
   previous: string | null
   loading: boolean
   error: string | null
+  searchTerm: string
 }
 
 export const usePokemonStore = defineStore('pokemon', {
@@ -19,8 +21,25 @@ export const usePokemonStore = defineStore('pokemon', {
     previous: null,
     loading: false,
     error: null,
+    searchTerm: '',
   }),
+  getters: {
+    filteredPokemons(state): PokemonListItem[] {
+      const q = state.searchTerm.trim()
+      if (!q) return state.pokemons
+      const fuse = new Fuse(state.pokemons, {
+        keys: ['name'],
+        threshold: 0.3,
+        ignoreLocation: true,
+        minMatchCharLength: 1,
+      })
+      return fuse.search(q).map((r) => r.item)
+    },
+  },
   actions: {
+    setSearchTerm(term: string) {
+      this.searchTerm = term
+    },
     async fetchAll() {
       this.loading = true
       this.error = null

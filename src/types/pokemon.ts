@@ -10,3 +10,5 @@ export interface PokemonListResponse {
   results: NamedAPIResource[]
 }
 
+// Local alias for readability in app code
+export type PokemonListItem = NamedAPIResource
