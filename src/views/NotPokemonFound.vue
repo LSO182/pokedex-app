@@ -13,10 +13,12 @@ function onResetSearch() {
 </script>
 
 <template>
-  <div class="text-center pt-10">
+  <div class="d-flex flex-column align-items-center pt-10">
     <p class="text-primary-black h1 mb-0 fw-bold lh-100">Uh-oh!</p>
     <p class="text-secondary-grey lost-py lh-150 mb-0 h5">You look lost on your journey!</p>
-    <BaseButton variant="primary" type="reset" @click="onResetSearch"> Go back home </BaseButton>
+    <BaseButton variant="primary" type="reset" @click="onResetSearch" class="btn-155">
+      Go back home
+    </BaseButton>
   </div>
 </template>
 

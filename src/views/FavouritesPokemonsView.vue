@@ -4,9 +4,14 @@ import { useFavouritesStore } from '@/stores/favourites'
 import SearchInput from '@/components/ui/SearchInput.vue'
 import NotPokemonFound from './NotPokemonFound.vue'
 import PokemonCard from '@/components/PokemonCard.vue'
+import { onMounted } from 'vue'
 
 const fav = useFavouritesStore()
 const { filteredFavouritePokemons, searchTerm } = storeToRefs(fav)
+
+onMounted(() => {
+  fav.setSearchTerm('')
+})
 </script>
 
 <template>

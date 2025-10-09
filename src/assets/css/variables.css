@@ -47,11 +47,8 @@
   --form-focus-ring-width: 3px;
 
   /* bottom nav tokens */
-  --bottom-nav-height: 72px;
   --bottom-nav-bg: #ffffff;
-  --bottom-nav-shadow: 0 -2px 12px rgba(0,0,0,0.08);
-  --bottom-nav-gap: 12px;
-  --bottom-nav-safe-inset: env(safe-area-inset-bottom, 0);
+  --bottom-nav-shadow: 0px -5px 4px 0px #0000000d;
 
   /* secondary button (gray) */
   --btn-secondary-text: #ffffff;

@@ -10,15 +10,13 @@ import SearchInput from '@/components/ui/SearchInput.vue'
 const store = usePokemonStore()
 const { pokemons, loading, error, searchTerm, filteredPokemons } = storeToRefs(store)
 
-const minDelayPassed = ref(false)
 onMounted(() => {
-  setTimeout(() => (minDelayPassed.value = true), 3000)
   if (!loading.value && pokemons.value.length === 0) {
     store.fetchAll()
   }
 })
 
-const showLoading = computed(() => loading.value || !minDelayPassed.value)
+const showLoading = computed(() => loading.value)
 </script>
 
 <template>

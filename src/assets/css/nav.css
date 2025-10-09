@@ -1,4 +1,4 @@
-/* Bottom navigation bar */
+/* bottom nav bar */
 .bottom-nav {
   position: fixed;
   left: 0;
@@ -6,27 +6,6 @@
   bottom: 0;
   background: var(--bottom-nav-bg);
   box-shadow: var(--bottom-nav-shadow);
-  padding: 8px 16px calc(8px + var(--bottom-nav-safe-inset));
+  padding: 18px 30px;
   z-index: 1000;
 }
-
-.bottom-nav__inner {
-  display: flex;
-  justify-content: center;
-  gap: var(--bottom-nav-gap);
-  min-height: var(--bottom-nav-height);
-}
-
-.bottom-nav__icon {
-  width: 18px;
-  height: 18px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* Spacer utility so content isn’t covered */
-.pb-bottom-nav {
-  padding-bottom: calc(var(--bottom-nav-height) + 24px + var(--bottom-nav-safe-inset));
-}
-

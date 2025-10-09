@@ -19,10 +19,13 @@
   --bs-btn-disabled-bg: var(--btn-primary-disabled-bg);
   --bs-btn-disabled-border-color: var(--btn-primary-disabled-border);
 
-  --bs-btn-padding-x: 20px;
-  --bs-btn-padding-y: 11px;
   --bs-btn-border-radius: 60px;
   line-height: var(--line-height-button);
+
+  display: flex;
+  height: 44px;
+  text-align: center;
+  justify-content: center;
 }
 
 /* secondary button */
@@ -41,11 +44,42 @@
   --bs-btn-active-color: var(--btn-secondary-active-text);
   --bs-btn-active-bg: var(--btn-secondary-active-bg);
   --bs-btn-active-border-color: var(--btn-secondary-active-border);
-
-  --bs-btn-padding-x: 20px;
-  --bs-btn-padding-y: 11px;
   --bs-btn-border-radius: 60px;
   line-height: var(--line-height-button);
+
+  display: flex;
+  height: 44px;
+  text-align: center;
+  justify-content: center;
+}
+
+/* btn-width utilities */
+.btn-131 {
+  width: 131px;
+}
+.btn-150 {
+  width: 150px;
+}
+.btn-155 {
+  width: 155px;
+}
+.btn-195 {
+  width: 195px;
+}
+
+@media (min-width: 992px) {
+  .btn-lg-131 {
+    width: 131px;
+  }
+  .btn-lg-155 {
+    width: 155px;
+  }
+  .btn-lg-195 {
+    width: 195px;
+  }
+  .btn-lg-275 {
+    width: 275px;
+  }
 }
 
 /* fav button */
@@ -69,4 +103,9 @@
 .btn-fav:active,
 .btn-fav[aria-pressed='true'] {
   color: var(--btn-fav-color-active);
+}
+
+.btn-content {
+  display: flex;
+  align-items: center;
 }

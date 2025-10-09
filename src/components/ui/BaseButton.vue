@@ -1,15 +1,8 @@
 <script setup lang="ts">
 import { computed } from 'vue'
+defineOptions({ inheritAttrs: false })
 
-type ButtonVariant =
-  | 'primary'
-  | 'secondary'
-  | 'success'
-  | 'danger'
-  | 'warning'
-  | 'info'
-  | 'light'
-  | 'dark'
+type ButtonVariant = 'primary' | 'secondary'
 
 const props = defineProps<{
   variant?: ButtonVariant

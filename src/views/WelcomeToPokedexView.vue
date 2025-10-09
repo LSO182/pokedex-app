@@ -26,13 +26,17 @@ async function onGetStarted() {
           </div>
         </div>
         <div class="col-lg-10">
-          <h1 class="text-primary-black text-center pt-60 lh-100 h3 fw-bold">Welcome to Pokédex</h1>
-          <p class="text-secondary-grey text-center pt-30 lh-150 h5">
+          <h1 class="text-primary-black text-center pt-60 lh-100 h3 fw-bold mb-0">
+            Welcome to Pokédex
+          </h1>
+          <p class="text-secondary-grey text-center pt-30 lh-150 h5 mb-0">
             The digital encyclopedia created by Professor Oak is an invaluable tool to Trainers in
             the Pokémon world.
           </p>
           <div class="d-flex justify-content-center pt-50">
-            <BaseButton variant="primary" @click="onGetStarted"> Get started </BaseButton>
+            <BaseButton variant="primary" @click="onGetStarted" class="btn-131">
+              Get started
+            </BaseButton>
           </div>
         </div>
       </div>
