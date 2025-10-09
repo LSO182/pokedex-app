@@ -10,6 +10,10 @@ const showBottomNav = computed(
 </script>
 
 <template>
-  <RouterView />
+  <RouterView v-slot="{ Component }">
+    <KeepAlive include="PokemonsView,FavouritesPokemonsView">
+      <component :is="Component" />
+    </KeepAlive>
+  </RouterView>
   <BottomNav v-if="showBottomNav" />
 </template>

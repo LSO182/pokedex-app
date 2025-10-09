@@ -1,4 +1,5 @@
 <script setup lang="ts">
+defineOptions({ name: 'PokemonsView' })
 import { storeToRefs } from 'pinia'
 import { usePokemonStore } from '@/stores/pokemon'
 import { computed } from 'vue'

@@ -37,9 +37,11 @@ function toggleFav() {
   if (!currentName.value) return
   favourites.toggle({ name: currentName.value, url: currentUrl.value })
 }
-const shareLabel = ref('Share to my friends')
+
+const shareLabel = ref('Copy details')
 const srAnnounce = ref('')
 const { visible: toastVisible, message: toastMessage, showToast } = useTransientToast(1800)
+
 async function share() {
   const d = detail.value
   const name = currentName.value
@@ -65,13 +67,12 @@ async function share() {
         document.body.removeChild(ta)
       }
     }
-    showToast('Se copiaron los valores al portapapeles')
-    srAnnounce.value = 'Copiado al portapapeles'
+    showToast('Copied details to clipboard')
+    srAnnounce.value = 'Copied to clipboard'
     setTimeout(() => (srAnnounce.value = ''), 1500)
   } catch (e) {
-    showToast('No se pudo copiar al portapapeles')
+    showToast('Failed to copy to clipboard')
   }
-  return
 }
 
 function show() {
@@ -134,7 +135,7 @@ onBeforeUnmount(() => {
           <div v-else-if="error" class="text-danger">{{ error }}</div>
           <template v-else>
             <div class="pokedex-image">
-              <div class="d-flex">
+              <div class="d-flex justify-content-end">
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                   <img src="/src/assets/images/btn-close-icon.png" alt="Close" />
                 </button>
@@ -149,7 +150,7 @@ onBeforeUnmount(() => {
                   detail.sprites.other?.['official-artwork']?.front_default ??
                   detail.sprites.other?.home?.front_default!
                 "
-                alt="Pokemon image"
+                alt="Pokémon image"
                 class="pokemon-image"
               />
             </div>

@@ -40,7 +40,7 @@ const go = (name: 'pokemons' | 'favourites-pokemons') => {
         <template #icon>
           <img
             src="/src/assets/images/star-icon-btn.png"
-            alt="Favourites list"
+            alt="Favorites list"
             width="22"
             height="22"
           />

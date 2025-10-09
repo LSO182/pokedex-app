@@ -1,4 +1,5 @@
 <script setup lang="ts">
+defineOptions({ name: 'FavouritesPokemonsView' })
 import { storeToRefs } from 'pinia'
 import { useFavouritesStore } from '@/stores/favourites'
 import SearchInput from '@/components/ui/SearchInput.vue'
@@ -17,7 +18,7 @@ onMounted(() => {
 
 const { visible: toastVisible, message: toastMessage, showToast } = useTransientToast(1800)
 function onRemoved(name: string) {
-  showToast(`Quitaste ${name} de favoritos`)
+  showToast(`Removed ${name} from favorites`)
 }
 </script>
 
