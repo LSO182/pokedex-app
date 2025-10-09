@@ -45,4 +45,22 @@
   --form-focus-color: #eca539; /* border color on focus */
   --form-focus-ring: rgba(236, 165, 57, 0.35); /* outer glow */
   --form-focus-ring-width: 3px;
+
+  /* bottom nav tokens */
+  --bottom-nav-height: 72px;
+  --bottom-nav-bg: #ffffff;
+  --bottom-nav-shadow: 0 -2px 12px rgba(0,0,0,0.08);
+  --bottom-nav-gap: 12px;
+  --bottom-nav-safe-inset: env(safe-area-inset-bottom, 0);
+
+  /* secondary button (gray) */
+  --btn-secondary-text: #ffffff;
+  --btn-secondary-bg: #bfbfbf;
+  --btn-secondary-border: #bfbfbf;
+  --btn-secondary-hover-text: #ffffff;
+  --btn-secondary-hover-bg: #a7a7a7;
+  --btn-secondary-hover-border: #a7a7a7;
+  --btn-secondary-active-text: #ffffff;
+  --btn-secondary-active-bg: #9a9a9a;
+  --btn-secondary-active-border: #9a9a9a;
 }

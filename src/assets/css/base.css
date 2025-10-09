@@ -23,7 +23,7 @@ h1,
 }
 h2,
 .h2 {
-  font-size: 2rem;
+  font-size: 2.25rem;
 }
 h3,
 .h3 {
@@ -62,4 +62,7 @@ h6,
 }
 .pt-30 {
   padding-top: 30px;
+}
+.pt-10 {
+  padding-top: 10px;
 }

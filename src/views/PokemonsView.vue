@@ -3,6 +3,7 @@ import { storeToRefs } from 'pinia'
 import { usePokemonStore } from '@/stores/pokemon'
 import { onMounted, ref, computed } from 'vue'
 import LoadingView from './LoadingView.vue'
+import NotPokemonFound from './NotPokemonFound.vue'
 import PokemonCard from '@/components/PokemonCard.vue'
 import SearchInput from '@/components/ui/SearchInput.vue'
 
@@ -22,7 +23,7 @@ const showLoading = computed(() => loading.value || !minDelayPassed.value)
 
 <template>
   <LoadingView v-if="showLoading" />
-  <div class="bg-primary-grey min-vh-100" v-else>
+  <div class="bg-primary-grey min-vh-100 pb-bottom-nav" v-else>
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-lg-10">
@@ -30,9 +31,12 @@ const showLoading = computed(() => loading.value || !minDelayPassed.value)
           <div v-else>
             <div class="d-flex flex-column align-items-center justify-content-center">
               <SearchInput v-model="searchTerm" placeholder="Search" class="search-input-py" />
-              <div v-for="pokemon in filteredPokemons" :key="pokemon.name">
-                <PokemonCard :name="pokemon.name" />
-              </div>
+              <NotPokemonFound v-if="searchTerm && filteredPokemons.length === 0" />
+              <template v-else>
+                <div v-for="pokemon in filteredPokemons" :key="pokemon.name">
+                  <PokemonCard :name="pokemon.name" />
+                </div>
+              </template>
             </div>
           </div>
         </div>

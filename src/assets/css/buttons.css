@@ -1,6 +1,8 @@
-/*primary button color system */
+/*primary button */
 .btn-primary {
   --bs-btn-font-weight: var(--font-weight-bold);
+  --bs-btn-font-size: var(--font-size-button);
+  font-size: var(--font-size-button);
   --bs-btn-color: var(--btn-primary-text);
   --bs-btn-bg: var(--btn-primary-bg);
   --bs-btn-border-color: var(--btn-primary-border);
@@ -16,6 +18,29 @@
   --bs-btn-disabled-color: var(--btn-primary-disabled-text);
   --bs-btn-disabled-bg: var(--btn-primary-disabled-bg);
   --bs-btn-disabled-border-color: var(--btn-primary-disabled-border);
+
+  --bs-btn-padding-x: 20px;
+  --bs-btn-padding-y: 11px;
+  --bs-btn-border-radius: 60px;
+  line-height: var(--line-height-button);
+}
+
+/* secondary button */
+.btn-secondary {
+  --bs-btn-font-weight: var(--font-weight-bold);
+  --bs-btn-font-size: var(--font-size-button);
+  font-size: var(--font-size-button);
+  --bs-btn-color: var(--btn-secondary-text);
+  --bs-btn-bg: var(--btn-secondary-bg);
+  --bs-btn-border-color: var(--btn-secondary-border);
+
+  --bs-btn-hover-color: var(--btn-secondary-hover-text);
+  --bs-btn-hover-bg: var(--btn-secondary-hover-bg);
+  --bs-btn-hover-border-color: var(--btn-secondary-hover-border);
+
+  --bs-btn-active-color: var(--btn-secondary-active-text);
+  --bs-btn-active-bg: var(--btn-secondary-active-bg);
+  --bs-btn-active-border-color: var(--btn-secondary-active-border);
 
   --bs-btn-padding-x: 20px;
   --bs-btn-padding-y: 11px;
@@ -42,6 +67,6 @@
 
 .btn-fav:hover,
 .btn-fav:active,
-.btn-fav[aria-pressed="true"] {
+.btn-fav[aria-pressed='true'] {
   color: var(--btn-fav-color-active);
 }

@@ -47,14 +47,20 @@ select::placeholder,
     0px 2px 10px 0px #0000000a;
 }
 
-/* Montserrat convenience class (apply to input or wrapper) */
+/* input placeholder font family */
 .montserrat-500 {
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-optical-sizing: auto;
   font-weight: 500;
   font-style: normal;
 }
 .montserrat-500 .form-control,
-.montserrat-500 input { font-family: inherit; font-weight: 500; }
+.montserrat-500 input {
+  font-family: inherit;
+  font-weight: 500;
+}
 .montserrat-500 .form-control::placeholder,
-.montserrat-500 input::placeholder { font-family: inherit; font-weight: 500; }
+.montserrat-500 input::placeholder {
+  font-family: inherit;
+  font-weight: 500;
+}
