@@ -38,7 +38,7 @@ function toggleFav() {
   favourites.toggle({ name: currentName.value, url: currentUrl.value })
 }
 
-const shareLabel = ref('Copy details')
+const shareLabel = ref('Share to my friends')
 const srAnnounce = ref('')
 const { visible: toastVisible, message: toastMessage, showToast } = useTransientToast(1800)
 
@@ -134,8 +134,8 @@ onBeforeUnmount(() => {
           <div v-if="loading">Loading…</div>
           <div v-else-if="error" class="text-danger">{{ error }}</div>
           <template v-else>
-            <div class="pokedex-image">
-              <div class="d-flex justify-content-end">
+            <div class="pokedex-image position-relative">
+              <div class="position-absolute right-0">
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                   <img src="/src/assets/images/btn-close-icon.png" alt="Close" />
                 </button>
@@ -177,9 +177,9 @@ onBeforeUnmount(() => {
                 </p>
               </div>
               <div
-                class="d-flex align-items-center justify-content-center gap-3 mt-4 modal-buttons"
+                class="d-flex align-items-center justify-content-center justify-content-lg-between pt-20 px-lg-30"
               >
-                <BaseButton variant="primary" @click="share" class="btn-195">{{
+                <BaseButton variant="primary" @click="share" class="btn-195 me-3 me-lg-0">{{
                   shareLabel
                 }}</BaseButton>
                 <FavButton :pressed="isFav" @click="toggleFav" />
@@ -202,5 +202,13 @@ onBeforeUnmount(() => {
   border-bottom: 1px solid var(--tertiary-grey);
   margin: 0 30px;
 }
-/* toast styles are encapsulated in BaseToast */
+.right-0 {
+  right: 0;
+}
+@media (min-width: 992px) {
+  .px-lg-30 {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+}
 </style>

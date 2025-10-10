@@ -55,8 +55,16 @@ function openModal() {
   width: 315px;
   margin-bottom: 10px;
 }
+@media (min-width: 992px) {
+  .pokemon-card {
+    width: 570px;
+  }
+}
 .pokemon-card p {
   padding: 17px 20px;
+}
+.pokemon-card p:hover {
+  cursor: pointer;
 }
 .card-btn-fav {
   padding-right: 10px;

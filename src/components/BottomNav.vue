@@ -20,11 +20,11 @@ const go = (name: 'pokemons' | 'favourites-pokemons') => {
 
 <template>
   <nav class="bottom-nav" role="navigation" aria-label="Primary navigation">
-    <div class="d-flex justify-content-between">
+    <div class="d-flex justify-content-between justify-content-lg-center">
       <BaseButton
         :variant="isAll() ? 'primary' : 'secondary'"
         @click="go('pokemons')"
-        class="btn-150"
+        class="btn-150 btn-lg-275 mr-20"
       >
         <template #icon>
           <img src="/src/assets/images/list-icon-btn.png" alt="All list" width="22" height="22" />
@@ -35,7 +35,7 @@ const go = (name: 'pokemons' | 'favourites-pokemons') => {
       <BaseButton
         :variant="isFav() ? 'primary' : 'secondary'"
         @click="go('favourites-pokemons')"
-        class="btn-150"
+        class="btn-150 btn-lg-275"
       >
         <template #icon>
           <img
@@ -54,5 +54,8 @@ const go = (name: 'pokemons' | 'favourites-pokemons') => {
 <style scoped>
 .btn-icon img {
   margin-right: 10px;
+}
+.mr-20 {
+  margin-right: 20px;
 }
 </style>

@@ -5,6 +5,12 @@
   border: none;
 }
 
+@media (min-width: 992px) {
+  .modal-content {
+    width: 570px;
+  }
+}
+
 .pokedex-image {
   background: url('../images/pokelandscape-bg.png') no-repeat bottom;
   background-size: cover;
@@ -12,6 +18,12 @@
   border-radius: 5px 5px 0 0;
 }
 
+@media (min-width: 992px) {
+  .pokedex-image {
+    height: 220px;
+    background-position: bottom;
+  }
+}
 .pokemon-image {
   max-width: 180px;
 }
