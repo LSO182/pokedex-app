@@ -1,0 +1,8 @@
+/* CSS barrel file */
+@import './variables.css';
+@import './base.css';
+@import './buttons.css';
+@import './animations.css';
+@import './forms.css';
+@import './nav.css';
+@import './modal.css';

@@ -1,0 +1,39 @@
+.modal-content {
+  width: 315px;
+  height: 506px;
+  border-radius: 5px;
+  border: none;
+}
+
+@media (min-width: 992px) {
+  .modal-content {
+    width: 570px;
+  }
+  .modal {
+    --bs-modal-width: 570px;
+  }
+}
+
+.pokedex-image {
+  background: url('../images/pokelandscape-bg.png') no-repeat;
+  background-size: cover;
+  height: 220px;
+  border-radius: 5px 5px 0 0;
+}
+
+@media (min-width: 992px) {
+  .pokedex-image {
+    background: url('../images/pokelandscape-desktop-bg.png') no-repeat;
+  }
+}
+.pokemon-image {
+  max-width: 180px;
+}
+
+.btn-close {
+  padding: 15px;
+  width: 26px;
+  height: 26px;
+  border: none;
+  --bs-btn-close-bg: url('../images/btn-close-icon.png') center/contain no-repeat;
+}
