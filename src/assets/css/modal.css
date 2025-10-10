@@ -9,19 +9,21 @@
   .modal-content {
     width: 570px;
   }
+  .modal {
+    --bs-modal-width: 570px;
+  }
 }
 
 .pokedex-image {
-  background: url('../images/pokelandscape-bg.png') no-repeat bottom;
+  background: url('../images/pokelandscape-bg.png') no-repeat;
   background-size: cover;
-  height: 202px;
+  height: 220px;
   border-radius: 5px 5px 0 0;
 }
 
 @media (min-width: 992px) {
   .pokedex-image {
-    height: 220px;
-    background-position: bottom;
+    background: url('../images/pokelandscape-desktop-bg.png') no-repeat;
   }
 }
 .pokemon-image {

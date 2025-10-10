@@ -1,4 +1,4 @@
-<script setup lang="ts">
+﻿<script setup lang="ts">
 import { ref, watch, onMounted, onBeforeUnmount, computed } from 'vue'
 import Modal from 'bootstrap/js/dist/modal'
 import { fetchPokemonDetail } from '@/services/pokemon.service'
@@ -38,9 +38,16 @@ function toggleFav() {
   favourites.toggle({ name: currentName.value, url: currentUrl.value })
 }
 
-const shareLabel = ref('Share to my friends')
 const srAnnounce = ref('')
 const { visible: toastVisible, message: toastMessage, showToast } = useTransientToast(1800)
+// simplify image conditions for template
+const imageSrc = computed(
+  () =>
+    detail.value?.sprites.other?.['official-artwork']?.front_default ??
+    detail.value?.sprites.other?.home?.front_default ??
+    null,
+)
+const hasImage = computed(() => Boolean(imageSrc.value))
 
 async function share() {
   const d = detail.value
@@ -131,7 +138,7 @@ onBeforeUnmount(() => {
     <div class="modal-dialog modal-dialog-centered justify-content-center">
       <div class="modal-content">
         <div class="modal-body text-center p-0">
-          <div v-if="loading">Loading…</div>
+          <div v-if="loading">Loadingâ€¦</div>
           <div v-else-if="error" class="text-danger">{{ error }}</div>
           <template v-else>
             <div class="pokedex-image position-relative">
@@ -140,19 +147,21 @@ onBeforeUnmount(() => {
                   <img src="/src/assets/images/btn-close-icon.png" alt="Close" />
                 </button>
               </div>
-              <img
-                v-if="
-                  detail &&
-                  (detail.sprites.other?.['official-artwork']?.front_default ||
-                    detail.sprites.other?.home?.front_default)
-                "
-                :src="
-                  detail.sprites.other?.['official-artwork']?.front_default ??
-                  detail.sprites.other?.home?.front_default!
-                "
-                alt="Pokémon image"
-                class="pokemon-image"
-              />
+              <div class="pt-20">
+                <img
+                  v-if="
+                    detail &&
+                    (detail.sprites.other?.['official-artwork']?.front_default ||
+                      detail.sprites.other?.home?.front_default)
+                  "
+                  :src="
+                    detail.sprites.other?.['official-artwork']?.front_default ??
+                    detail.sprites.other?.home?.front_default!
+                  "
+                  alt="Pokemon image"
+                  class="pokemon-image"
+                />
+              </div>
             </div>
             <div class="text-start">
               <div class="detail-container pt-20" v-if="detail">
@@ -179,9 +188,9 @@ onBeforeUnmount(() => {
               <div
                 class="d-flex align-items-center justify-content-center justify-content-lg-between pt-20 px-lg-30"
               >
-                <BaseButton variant="primary" @click="share" class="btn-195 me-3 me-lg-0">{{
-                  shareLabel
-                }}</BaseButton>
+                <BaseButton variant="primary" @click="share" class="btn-195 me-3 me-lg-0">
+                  Share to my friends
+                </BaseButton>
                 <FavButton :pressed="isFav" @click="toggleFav" />
                 <span class="visually-hidden" aria-live="polite">{{ srAnnounce }}</span>
               </div>

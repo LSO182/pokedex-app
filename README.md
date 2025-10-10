@@ -1,42 +1,45 @@
-# pokedex-app
+﻿# Pokedex Challenge
 
-This template should help get you started developing with Vue 3 in Vite.
+## Descripcion
 
-## Recommended IDE Setup
+Para construir este proyecto usé Vite para la instalación/arquitectura del repo, Vue 3, Bootstrap y TypeScript. Sumé Fuse.js para mejorar el filtrado de pokémon: como el diseño no plantea paginación, me pareció correcto darle “ayuda” al usuario para navegar mejor.
 
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+Me gusta trabajar desde siempre bajo los principios SOLID, KISS y DRY. Separo vistas de componentes y, dentro de componentes, diferencio los de UI básicos (botón, inputs) de los que tienen lógica. Intenté que todo sea reutilizable y alimentado por props. Cuando un componente/vista concentra bastante HTML + lógica, separo CSS dedicado para hacerlo más legible y escalable, asignando responsabilidades únicas a cada archivo.
 
-## Recommended Browser Setup
+También separé las stores: una para todos los pokémon y otra sólo para favoritos. Elegí Pinia en lugar de Vuex porque necesita menos boilerplate y es más directo: importás/exportás lo que necesitás y con una action modificás el state sin mutaciones innecesarias.
 
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd) 
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
+Apliqué un guard a la ruta “/pokemons” para cubrir el caso de recargar el navegador: si falta data, dispara el fetch y deja pasar mostrando el loading (sin redirecciones). Además usé Lazy Loading en rutas y KeepAlive para cachear las vistas de tabs.
 
-## Type Support for `.vue` Imports in TS
+Vue 3: directivas claras, menos boilerplate que Vue 2, y Router/KeepAlive/Lazy Loading listos.
+Bootstrap 5: utilidades y variables CSS que permiten avanzar rápido sin perder buenas prácticas.
+Fuse.js: fuzzy search para mejorar el filtrado cuando no hay paginación.
+TypeScript: tipado que evita errores comunes y mejora autocompletado/compilación.
+Vite: proyecto liviano, arranque rápido y tooling moderno (Vitest para tests).
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+## Tecnologi­as utilizadas
 
-## Customize configuration
+- Vue 3, Vite, TypeScript
+- Pinia, Vue Router
+- Bootstrap 5, CSS
+- Fuse.js
+- Vitest, @vue/test-utils, Testing Library
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+## Instalacion y ejecucion
 
-## Project Setup
+- Clonar el repositorio
+- git clone https://github.com/LSO182/pokedex-app.git
+- cd pokedex-app
+- Instalar dependencias
+- npm install
+  Ejecutar en desarrollo
+- npm run dev
+- Correr tests (opcional)
+- npm run test
 
-```sh
-npm install
-```
+## Requisitos
 
-### Compile and Hot-Reload for Development
+Node.js v20 (se recomienda usar nvm para gestionar versiones)
 
-```sh
-npm run dev
-```
+Para cambiar a la version correcta:
 
-### Type-Check, Compile and Minify for Production
-
-```sh
-npm run build
-```
+nvm use 20

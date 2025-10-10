@@ -53,6 +53,7 @@ function openModal() {
 <style scoped>
 .pokemon-card {
   width: 315px;
+  height: 60px;
   margin-bottom: 10px;
 }
 @media (min-width: 992px) {

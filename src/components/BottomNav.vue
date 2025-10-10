@@ -55,7 +55,9 @@ const go = (name: 'pokemons' | 'favourites-pokemons') => {
 .btn-icon img {
   margin-right: 10px;
 }
-.mr-20 {
-  margin-right: 20px;
+@media (min-width: 992px) {
+  .mr-20 {
+    margin-right: 20px;
+  }
 }
 </style>
