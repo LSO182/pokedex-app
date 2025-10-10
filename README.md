@@ -46,4 +46,6 @@ nvm use 20
 
 ## Notas técnicas
 
+- Tambien persisto los favoritos en localStorage para que se mantengan entre sesiones.
+
 - Usé fetch nativo en lugar de axios porque el proyecto no requiere interceptores, manejo de tokens o una capa adicional de cliente HTTP. Con Vite + TypeScript, el tipado genérico de respuestas y un wrapper mínimo (`apiClient.ts`) son suficientes para las necesidades del desafío.
